@@ -4,7 +4,6 @@ import requests
 from PIL import Image
 from io import BytesIO
 from tkinter import ttk
-from xml.etree import ElementTree
 from PIL.Image import ElementTree
 from colorama import Fore, Style, init
 from tkinter import font
