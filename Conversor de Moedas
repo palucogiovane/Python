@@ -20,7 +20,7 @@ moedas = {'USD': 5.46,
 def teste(event):
     escolha = caixaselecao.get()
     conta = moedas[escolha[0:3]]
-    resultado = float(valordigitado.get()) * conta
+    resultado = float(valordigitado.get()) / conta
     variavelConvertida.set(resultado)
 
 #Criação da tela
