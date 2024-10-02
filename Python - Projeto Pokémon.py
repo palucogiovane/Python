@@ -78,8 +78,6 @@ pc.pack()
 
 
 botao = paluco.Button(tela,text="Carregar Pokémon", command=pokemon)
-botao.pack()
-botao.configure(background='black', borderwidth=8)
 
 
 tela.mainloop()
