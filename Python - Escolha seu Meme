@@ -1,0 +1,78 @@
+import tkinter as paluco
+import requests
+from PIL import Image
+from io import BytesIO
+from tkinter import ttk
+
+def getAllMemes():
+    url = "https://api.imgflip.com/get_memes"
+    response = requests.get(url)
+    memesJson = response.json()
+    memes = {}
+    for i in memesJson['data']['memes']:
+        url = i['url']
+        nome = i['name']
+        memes[nome] = url
+    return memes
+
+def buscarMemes():
+    memes = getAllMemes()
+    listaMemes = []
+    for valor in memes:
+        listaMemes.append(valor)
+    return listaMemes
+
+def memesCombobox(event):
+    pegarMeme = mc.get()
+    memes = getAllMemes()
+    Url = memes[pegarMeme]
+    abrirImagem1(Url)
+
+def pegaImagemNet(linkImagem):
+    respostaSite = requests.get(linkImagem)
+    imagemSite = BytesIO(respostaSite.content)
+    imagem = Image.open(imagemSite)
+    imagem = imagem.convert('RGB')
+    return imagem
+
+def converterImagem(imagem):
+    with BytesIO() as output:
+        imagem.save(output, format='PPM')
+        ppmImagem = output.getvalue()
+    return ppmImagem
+
+def abrirImagem1(imgUrl):
+    novaImg = pegaImagemNet(imgUrl)
+    novaImgPPM = converterImagem(novaImg)
+    novaImg = paluco.PhotoImage(data=novaImgPPM)
+    canvas.itemconfig(imgCanvas, image=novaImg)
+
+    canvas.image = novaImg
+
+tela = paluco.Tk()
+tela.title('Escolha seu meme')
+tela.configure(background='lightblue')
+
+label = paluco.Label(text='Escolha seu meme')
+label.configure(background='white')
+label.pack(pady=10)
+
+canvas = paluco.Canvas(tela, width=500, height=500)
+canvas.pack(pady=10)
+imgCanvas = canvas.create_image(250, 250)
+
+texto = paluco.Entry(tela,)
+texto.pack()
+texto.configure(background='white')
+
+memes = buscarMemes()
+mc = ttk.Combobox(tela, values=memes)
+mc.bind("<<ComboboxSelected>>", memesCombobox)
+mc.pack()
+
+botao = paluco.Button(tela,text="Carregar Meme")
+botao.pack()
+
+
+tela.mainloop()
+
