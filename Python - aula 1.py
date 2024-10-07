@@ -105,3 +105,5 @@ print("Percentual da Receita 3:",per_r3,)
 print("Percentual da Despesa 1:",per_d1,)
 print("Percentual da Despesa 2:",per_d2,)
 print("Percentual da Despesa 3:",per_d3,)
+
+'''
