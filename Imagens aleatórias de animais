@@ -2,6 +2,7 @@ import tkinter as paluco
 import requests
 from PIL import Image
 from io import BytesIO
+from tkinter import ttk
 
 
 def cachorro():
@@ -17,6 +18,7 @@ def gato():
     pegarGato = gerarGato.json()
     msgGato = pegarGato[0]['url']
     abrirImagem1(msgGato, canvas1, imgCanvas1)
+
 
 def pegaImagemNet(linkImagem):
     respostaSite = requests.get(linkImagem)
@@ -48,27 +50,28 @@ tela.configure(background='green')
 #Cachorro
 botao = paluco.Button(tela,text="Carregar imagem de cachorro aleatoriamente", command=cachorro)
 botao.place(x=1055, y=760)
+botao.configure(background='yellow')
 
 canvas = paluco.Canvas(tela, width=500, height=700)
 canvas.place(x=930, y=50)
 imgCanvas = canvas.create_image(250, 350)
 
-label = paluco.Label(text='Gerar foto aleatória de cachorro')
-label.configure(background='white')
+label = paluco.Label(tela, text='Gerar foto aleatória de cachorro')
+label.configure(background='red')
 label.place(x=1100, y=30)
 
 
 #Gato
 botao = paluco.Button(tela,text="Carregar imagem de gato aleatoriamente", command=gato)
 botao.place(x=230, y=760 )
+botao.configure(background='yellow')
 
-label = paluco.Label(text='Gerar foto aleatória de gato')
-label.configure(background='white')
+label = paluco.Label(tela, text='Gerar foto aleatória de gato')
+label.configure(background='blue')
 label.place(x=270, y=30)
 
 canvas1 = paluco.Canvas(tela, width=500, height=700)
 canvas1.place(x=100, y=50)
 imgCanvas1 = canvas1.create_image(250, 350)
-
 
 tela.mainloop()
