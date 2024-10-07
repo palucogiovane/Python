@@ -11,7 +11,6 @@ area = areaCirculo(raio,pi)
 print('A área do circulo é:',area,)
 '''
 
-
 #Operações básicas
 def soma (a,b):
     soma1 = a + b
