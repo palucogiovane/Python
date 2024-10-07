@@ -1,4 +1,3 @@
-
 '''
 import tkinter as paluco
 from tkinter import font
