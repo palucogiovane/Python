@@ -1,4 +1,3 @@
-
 #Calculadora
 '''
 def soma (numero1,numero2):
