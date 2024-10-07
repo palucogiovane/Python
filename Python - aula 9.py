@@ -9,7 +9,6 @@ tela.title('Giovane Paluco - Phyton')
 canvas = paluco.Canvas(tela, width=800, height=800)
 canvas.pack()
 
-
 #   Eventos com o Teclado
 def Onkey(loc):
         print("Tecla pressionada:", loc.char, "Shift",)
