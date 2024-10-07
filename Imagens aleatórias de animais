@@ -12,6 +12,13 @@ def cachorro():
     msgCachorro = pegarCachorro['message']
     abrirImagem1(msgCachorro)
 
+def gato():
+    url = 'https://api.thecatapi.com/v1/images/search'
+    gerarGato = requests.get(url)
+    pegarGato = gerarGato.json()
+    msgGato = pegarGato[0]['url']
+    abrirImagem1(msgGato)
+
 def pegaImagemNet(linkImagem):
     respostaSite = requests.get(linkImagem)
     imagemSite = BytesIO(respostaSite.content)
@@ -45,8 +52,10 @@ canvas = paluco.Canvas(tela, width=500, height=700)
 canvas.pack()
 imgCanvas = canvas.create_image(250, 350)
 
-
 botao = paluco.Button(tela,text="Carregar imagem de cachorro aleatoriamente", command=cachorro)
+botao.pack(pady=5)
+
+botao = paluco.Button(tela,text="Carregar imagem de gato aleatoriamente", command=gato)
 botao.pack()
 
 
